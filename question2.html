@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>问题 2</title>
+</head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<body>
+
+<h2>Do you have experience assembling your own computer</h2>
+
+<a href="question3.html?score=1">Never</a><br>
+<a href="question3.html?score=2">Tried but not much.</a><br>
+<a href="question3.html?score=3">Assembled many of them.</a>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const previousScore = params.get('score') ? parseInt(params.get('score'), 10) : 0;
+
+
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', function(event) {
+    const optionScore = parseInt(this.getAttribute('href').split('=')[1], 10);
+    const nextScore = previousScore + optionScore;
+   
+    this.href = `question3.html?score=${nextScore}`;
+  });
+});
+</script>
+
+</body>
+</html>

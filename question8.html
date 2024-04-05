@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>问题 8</title>
+</head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<body>
+
+<h2>Is there a requirement for the brand of fittings?</h2>
+<a href="result.html?score=1">unimportant</a><br>
+<a href="result.html?score=2">Good brand</a><br>
+<a href="result.html?score=3">Major brand</a>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const previousScore = params.get('score') ? parseInt(params.get('score'), 10) : 0;
+
+
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', function(event) {
+    const optionScore = parseInt(this.getAttribute('href').split('=')[1], 10);
+    const nextScore = previousScore + optionScore;
+   
+    this.href = `result.html?score=${nextScore}`;
+  });
+});
+</script>
+
+</body>
+</html>

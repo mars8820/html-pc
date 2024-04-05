@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>问题 3</title>
+</head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<body>
+
+<h2>What's your budget?</h2>
+
+<a href="question4.html?score=1">$500-1000</a><br>
+<a href="question4.html?score=2">$1001-2000</a><br>
+<a href="question4.html?score=3">$2001-$3000</a>
+
+<script>
+
+const params = new URLSearchParams(window.location.search);
+const previousScore = params.get('score') ? parseInt(params.get('score'), 10) : 0;
+
+
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', function(event) {
+    const optionScore = parseInt(this.getAttribute('href').split('=')[1], 10);
+    const nextScore = previousScore + optionScore;
+    
+    this.href = `question4.html?score=${nextScore}`;
+  });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>result
+</title>
+</head>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: #fff;
+}
+
+.container {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #ffffff;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+</style>
+<body>
+
+<h2>Your result:</h2>
+<div id="result">Loading...</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const totalScore = params.get('score') ? parseInt(params.get('score'), 10) : 0;
+let resultText = "";
+
+if (totalScore <= 8) {
+  resultText = 
+  `
+    CPU: i5 12400F
+    Motherboard: ASUS B660m-k
+    GPU: RTX4060ti
+    RAM: DDR4 3200/3600 16GB(2x8GB)
+    SSD: Kingston NV2 1TB
+    Cooler: Thermalright Peerless Assassin 120 SE
+    PSU: Thermalright 650W TG-650
+  `;
+
+} else if (totalScore <= 16) {
+  resultText = `
+    CPU: i5 14600kf
+    Motherboard: ASUS B760m
+    GPU: RTX4080
+    RAM: DDR5 6400 C32 32GB(2x16GB)
+    SSD: SK hynix Platinum P41 2TB 
+    Cooler: DeepCool LT720
+    PSU: Thermaltake GF1 850W
+  `;
+} else {
+  resultText = `
+    CPU: i7 14700K
+    Motherboard: MSI Z790-A
+    GPU: RTX4090
+    RAM: DDR5 6400 C32 32GB(2x16GB)
+    SSD: SK hynix Platinum P41 2TB 
+    Cooler: DeepCool LT720
+    PSU: Seasonic FOCUS GX-1000
+  `;
+}
+
+document.getElementById('result').innerText = resultText;
+</script>
+
+</body>
+</html>
